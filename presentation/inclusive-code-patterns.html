@@ -1,0 +1,536 @@
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<link rel="stylesheet" href="css/custom.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section >
+<h1>Accessible code patterns</h1>
+<p>francesco bedussi</p>
+<p>inspired by</p>
+<p><a href="https://www.smashingmagazine.com/inclusive-design-patterns/"><em>Inclusive design pattern</em> by Heydon Pickering</a></p>
+</section>
+<section >
+<section >
+<blockquote>
+<p>unfortunately, we have a habit of overengineering and overcomplicating things</p>
+<p>targeting a so-called average user is a disastrus interface design strategy, because average users do not exist</p>
+<p><em>Heydon Pickering</em></p>
+</blockquote>
+</section>
+<section >
+<p><img src="C:/repository/inclusive-code-patterns/average-user.svg" alt=""></p>
+</section>
+</section>
+<section >
+<h1>Accessibility, why?</h1>
+<ul>
+<li>It involves <strong>a lot of people</strong>: Though estimates vary, most studies find that about one fifth (20%) of the population has some kind of disability</li>
+<li>Search engine spiders are severely &quot;impaired&quot;, so an accessible site is also a <strong>search engine friendly site</strong></li>
+<li><strong>We have to</strong>. Governments (especially USA) are enforcing accessibility by legislation</li>
+</ul>
+</section>
+<section >
+<h1>Accessibility, for whom?</h1>
+<ul>
+<li>Vision impairments</li>
+<li>Limited fine motor control</li>
+<li>Cognitive disabilities (rings a bell? :-P )</li>
+<li>Hearing impairments</li>
+<li>Older people (ourselves tomorrow)</li>
+</ul>
+</section>
+<section >
+<h1>Checklist</h1>
+<ul>
+<li>People who don't use a mouse should be able to use a site</li>
+<li>People who don't look at a screen should be able to use a site</li>
+<li>A site's content should be visually legible</li>
+<li>People should have control over automatic changes to the page</li>
+</ul>
+</section>
+<section >
+<h1>patterns vs principles</h1>
+</section>
+<section >
+<h1>index</h1>
+<ul>
+<li>document</li>
+<li>navigation</li>
+<li>(menu) button</li>
+<li>page</li>
+<li>paragraph</li>
+<li>list of products</li>
+<li>filter widget</li>
+<li>registration form</li>
+</ul>
+</section>
+<section >
+<h1>document</h1>
+</section>
+<section >
+<h1>document</h1>
+<section >
+<h2>the <code>lang</code> attribute</h2>
+<ul>
+<li>on <code>html</code> element, on any inner element</li>
+<li><code>:lang(en)</code> pseudo-class</li>
+</ul>
+</section>
+<section >
+<h2>allow pinch-to-zoom</h2>
+<h3>don't</h3>
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, 
+initial-scale=1.0, minimum-scale=1.0, 
+maximum-scale=1.0, user-scalable=no&quot;&gt;
+</code></pre>
+<h3>do</h3>
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, 
+   initial-scale=1.0&quot;&gt;
+</code></pre>
+</section>
+<section >
+<h2>font sizes</h2>
+<p>do</p>
+<pre><code>html {
+   font-size: 100%;
+}
+</code></pre>
+<p>don't</p>
+<pre><code>html {
+    font-size: 16px;
+}
+</code></pre>
+</section>
+<section >
+<p>responsive font-size</p>
+<pre><code>html { font-size: calc(1em + 1vw); }
+</code></pre>
+</section>
+<section >
+<p>Font loading</p>
+<ul>
+<li><a href="https://www.zachleat.com/web/comprehensive-webfonts/#fout-class">prefer FOUT over FOIT</a></li>
+<li><a href="https://github.com/bramstein/fontfaceobserver">load web fonts asynchronously</a></li>
+</ul>
+</section>
+<section >
+<ul>
+<li>use proper <code>title</code> element</li>
+<li>use the <code>main</code> element</li>
+</ul>
+</section>
+<section >
+<h2>bonus: print only the main element</h2>
+<pre><code>@media print {
+   body &gt; *:not(main) {
+       display: none;
+   }
+}
+</code></pre>
+</section>
+<section >
+<h2>skip to main content</h2>
+<ul>
+<li>for sighted keyboard users</li>
+</ul>
+<pre><code>[href=&quot;#main&quot;] {
+    position: absolute;
+    top: 0;
+    right: 100%; /* moves off screen*/
+}
+
+[href=&quot;#main&quot;]:focus {
+    right: auto;
+}
+</code></pre>
+</section>
+</section>
+<section >
+<h1>navigation</h1>
+</section>
+<section >
+<h1>navigation</h1>
+<section >
+<ul>
+<li>a menu should look like a menu</li>
+</ul>
+<p><img src="C:/repository/inclusive-code-patterns/menu.svg" alt=""></p>
+</section>
+<section >
+<ul>
+<li>a menu is a <code>nav</code> containing an <code>ul</code></li>
+<li>identify the current page link...</li>
+<li>...but not with color alone</li>
+</ul>
+</section>
+<section >
+<h2>a navigation example</h2>
+<pre><code>&lt;header role=&quot;banner&quot;&gt;
+    &lt;a href=&quot;#main&quot;&gt;
+        &lt;img src=&quot;images/logo.svg&quot; alt=&quot;My project home&quot;&gt;
+    &lt;/a&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href=&quot;#main&quot;&gt;home&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href=&quot;/products&quot;&gt;products&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+</code></pre>
+</section>
+<section >
+<h2>table of contents</h2>
+<pre><code>&lt;nav class=&quot;toc&quot; aria-labelledby=&quot;contents-heading&quot;&gt;
+    &lt;h2 id=&quot;contents-heading&quot;&gt;Contents&lt;/h2&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&quot;#history&quot;&gt;Our history&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#services&quot;&gt;The services we offer&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#office&quot;&gt;Visit our office&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+<p>if you hijack the link to implement smooth scroll don't forget to manage the focus</p>
+</section>
+</section>
+<section >
+<h1>(menu) button</h1>
+</section>
+<section >
+<h1>(menu) button</h1>
+<section >
+<ul>
+<li>(hamburger) icon + label + button appearance</li>
+<li>min touch target size: 48x48px</li>
+</ul>
+<pre><code>&lt;nav aria-label=&quot;site&quot;&gt;
+    &lt;button aria-expanded=&quot;false&quot;&gt;
+        &lt;svg&gt;&lt;use xlink:href=&quot;#navicon&quot;&gt;&lt;/use&gt;&lt;/svg&gt;
+        menu
+    &lt;/button&gt;
+    &lt;ul hidden&gt;
+        &lt;li&gt;&lt;a href=&quot;#main&quot;&gt;home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/about&quot;&gt;about&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;/products&quot;&gt;products&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+</code></pre>
+</section>
+<section >
+<p>critical JS (vanilla, to be included at the end of the page)</p>
+<pre><code>(function() {
+    var button = document.querySelector('[aria-label=&quot;site&quot;] button');
+    var menu = button.nextElementSibling;
+
+    button.setAttribute('aria-expanded', 'false');
+    button.hidden = false;
+    menu.hidden = true;
+    
+    button.addEventListener('click', function() {
+        var expanded = this.getAtrtribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', String(!expanded));
+        menu.hidden = expanded;
+    });
+})();
+</code></pre>
+</section>
+</section>
+<section >
+<h1>page</h1>
+</section>
+<section >
+<h1>page</h1>
+<section >
+<h2>headings</h2>
+<ul>
+<li>describe nested sections</li>
+<li>one <code>h1</code> per page</li>
+<li>never skip a level</li>
+<li>never use a heading for a subtitle</li>
+</ul>
+</section>
+<section >
+<h2>video</h2>
+<ul>
+<li>use captions: non-native speakers, for people watching video with audio turned off (e.g. public places), for deaf and hard of hearing</li>
+<li>use keyboard and screen reader accessible players (e.g. YouTube, it provides captions too)</li>
+<li>provide a transcript (linearized version of captions)</li>
+</ul>
+</section>
+<section >
+<h2>Vertical flow</h2>
+<p>Use paragraph line-height as basis for vertical spacing: e.g if the line-height is 1.5, then one unit of vertical whitespace should be 1.5rem:</p>
+<pre><code>main * + * {
+    margin-top: 1.5rem;
+}
+</code></pre>
+<p>note the use of the <a href="https://alistapart.com/article/axiomatic-css-and-lobotomized-owls">owl selector</a></p>
+</section>
+<section >
+<h2>.visuallyHidden</h2>
+<pre><code>.visuallyHidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+}
+</code></pre>
+</section>
+<section >
+<h2>tricks</h2>
+<h3>defensive coding</h3>
+<pre><code>main :empty {
+    display: none;
+}
+</code></pre>
+<h3>forcefeed.js</h3>
+<p>allows you to feed the layout with random content of different length</p>
+</section>
+</section>
+<section >
+<h1>paragraph</h1>
+</section>
+<section >
+<h1>paragraph</h1>
+<section >
+<ul>
+<li>the ideal length of a line is around 60 characters
+<code>main {max-width: 60rem;}</code></li>
+<li>no justification</li>
+<li>line height ~1.5</li>
+</ul>
+<p><code>p { line-height: 1.5; /*unitless!*/}</code></p>
+<ul>
+<li>avoid extremely high or extremely low contrast</li>
+<li>keep the standard link style (blue, underlined) whenever possible, eventually improve it</li>
+<li>never ever just remove focus style, eventually replace it</li>
+</ul>
+</section>
+</section>
+<section >
+<h1>list of products</h1>
+</section>
+<section >
+<h1>list of products</h1>
+<section >
+<ul>
+<li>code products list as <code>&lt;ul&gt;</code></li>
+<li>use self-governing grid</li>
+</ul>
+<pre><code>.grid {display: flex; flex-wrap: wrap;}
+.grid li {flex-grow: 1; flex-shrink: 1; flex-basis: 10em}
+</code></pre>
+</section>
+<section >
+<h2>key information</h2>
+<p>group key pieces of information in a definition list:</p>
+<pre><code>&lt;dl&gt;
+    &lt;dt&gt;Size:&lt;/dt&gt;
+    &lt;dd&gt;90cm x 30xm&lt;/dd&gt;
+    &lt;dt&gt;Price:&lt;/dt&gt;
+    &lt;dd&gt;€35.95&lt;/dd&gt;
+&lt;/dl&gt;
+</code></pre>
+</section>
+<section >
+<h2>images</h2>
+<ul>
+<li>provide <code>alt</code> text only if it adds meaning</li>
+<li>optimize &amp; lazy load images</li>
+</ul>
+</section>
+<section >
+<h2>cta</h2>
+<ul>
+<li>if the cta is a link do not style it as a button...</li>
+<li>...but use some visual clue (e.g. color) common to links, buttons, ctas to indicate their interactivity</li>
+<li>if cta is a link style it using tag + class selector, e.g. <code>a.call-to-action</code></li>
+<li><a href="https://medium.com/simple-human/buttons-shouldnt-have-a-hand-cursor-b11e99ca374b">buttons do not have an hand cursor</a></li>
+<li>include the product name, eventually visually hidden, in the cta label</li>
+</ul>
+</section>
+<section >
+<h2>avoid link wrapping product block</h2>
+<ul>
+<li>it doesn't have a dedicated label</li>
+<li>produces unexpected behavior in some screen readers</li>
+<li>on touch device it can be pressed accidentally</li>
+</ul>
+</section>
+<section >
+<h2>use microdata to enhance SERP</h2>
+<pre><code>&lt;main id=&quot;main&quot; itemscope itemtype=&quot;http://schema.org/Product&quot;&gt;
+    &lt;h1&gt;
+        &lt;span itemprop=&quot;name&quot;&gt;Naked man in garage forecourt&lt;/span&gt;
+        &lt;a href=&quot;/artist/kenny-mulbarton&quot;&gt;by Kenny Mulbarton&lt;/a&gt;
+    &lt;/h1&gt;
+    &lt;img itemprop=&quot;image&quot; src=&quot;images/naked-forecourt-man.jpg&quot; alt=&quot;High-contrast black and white image of a naked man nonchalantly leaning against a petrol pump&quot; /&gt;
+    &lt;dl&gt;
+        &lt;dt&gt;Size: &lt;/dt&gt;
+        &lt;dd&gt;90cm &amp;times; 30cm&lt;/dd&gt;
+        &lt;dt&gt;Price: &lt;/dt&gt;
+        &lt;dd&gt; 
+            &lt;span itemprop=&quot;offers&quot; itemscope itemtype=&quot;http://schema.org/Offer&quot;&gt;
+                &lt;meta itemprop=&quot;priceCurrency&quot; content=&quot;EUR&quot; /&gt;
+                €&lt;span itemprop=&quot;price&quot;&gt;35.95&lt;/span&gt;
+            &lt;/span&gt;
+        &lt;/dd&gt;
+        &lt;dt&gt;Rating: &lt;/dt&gt;
+        &lt;dd&gt;
+            &lt;img src=&quot;images/rating_4_5_svg&quot; alt=&quot;&quot; /&gt;
+            &lt;span itemprop=&quot;aggregateRating&quot; itemscope itemtype=&quot;http://schema.org/AggregateRating&quot;&gt;
+                &lt;span itemprop=&quot;ratingValue&quot;&gt;4&lt;/span&gt; stars, based on &lt;span itemprop=&quot;reviewCount&quot;&gt;13&lt;/span&gt; reviews
+            &lt;/span&gt;
+        &lt;/dd&gt;
+        
+    &lt;/dl&gt;
+    &lt;h2&gt;Choose a payment method&lt;/h2&gt;
+    &lt;!-- ... --&gt;
+&lt;/main&gt;
+</code></pre>
+</section>
+<section >
+<h2>loading more results</h2>
+<ul>
+<li>avoid infinite scroll</li>
+<li>prefer a &quot;load more&quot; button</li>
+<li>remember to manage focus</li>
+<li>and to communicate that the loading is in progress</li>
+</ul>
+</section>
+<section >
+<ol>
+<li>click on &quot;load more&quot;</li>
+<li>the button is disabled and its label changed in &quot;loading&quot;</li>
+<li>a hidden live region announces &quot;loading more products&quot;</li>
+<li>the request is handled</li>
+<li>on success the content is rendered</li>
+<li>the live region announces &quot;products loaded&quot;</li>
+<li>focus is moved to the first of the new products</li>
+<li>the &quot;load more&quot; button reverts to its original status</li>
+</ol>
+</section>
+</section>
+<section >
+<h1>a filter widget</h1>
+</section>
+<section >
+<h1>a filter widget</h1>
+<section >
+<ul>
+<li>leverage HTML behavior</li>
+<li>visually hide radio buttons and style labels based on radio buttons status</li>
+<li>use live regions to communicate that the content is being fetched</li>
+<li>do not remove the submit button</li>
+</ul>
+</section>
+</section>
+<section >
+<h1>a registration form</h1>
+</section>
+<section >
+<h1>a registration form</h1>
+<section >
+<h2>login/register toolbar</h2>
+<pre><code>&lt;h1&gt;Welcome&lt;/h1&gt;
+    &lt;div role=&quot;toolbar&quot; aria-label=&quot;login or register&quot;&gt;
+        &lt;button aria-pressed=&quot;true&quot;&gt;Login&lt;/button&gt;
+        &lt;button aria-pressed=&quot;false&quot;&gt;Register&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;forms&quot;&gt;
+        &lt;div id=&quot;login&quot;&gt;
+            &lt;form&gt;
+                &lt;!-- login form --&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+
+        &lt;div id=&quot;register&quot;&gt;
+            &lt;form&gt;
+                &lt;!-- registration form --&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+</code></pre>
+</section>
+<section >
+<ul>
+<li>USE LABELS!!!</li>
+<li>placeholders are not labels, they are hints on how to fill in the field</li>
+</ul>
+</section>
+<section >
+<ul>
+<li><code>&lt;fieldset&gt;</code> are pointless without <code>&lt;legend&gt;</code></li>
+<li>use <code>aria-required=&quot;true&quot;</code> and prefer it over <code>required</code> html attribute</li>
+<li>give the possibility to show password</li>
+<li>mark error message containers as <code>aria-live=&quot;assertive&quot;</code></li>
+<li>use <code>aria-invalid=&quot;true&quot;</code> on field that do not pass the validation (it can be used as a CSS selector as well)</li>
+<li>provide a hint on why the field is invalid</li>
+</ul>
+</section>
+</section>
+
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			{
+				let configuration = {"controls":true,"progress":true,"slideNumber":false,"history":false,"keyboard":true,"overview":true,"center":true,"touch":true,"loop":false,"rtl":false,"shuffle":false,"fragments":true,"embedded":false,"help":true,"showNotes":false,"autoSlideStoppable":true,"mouseWheel":false,"hideAddressBar":true,"previewLinks":false,"transition":"slide","transitionSpeed":"default","backgroundTransition":"default","autoSlide":0,"viewDistance":3,"parallaxBackgroundImage":"","parallaxBackgroundSize":"","parallaxBackgroundHorizontal":null,"parallaxBackgroundVertical":null};
+				configuration.dependencies = [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				];
+				Reveal.initialize(configuration);
+			}
+		</script>
+
+	</body>
+</html>

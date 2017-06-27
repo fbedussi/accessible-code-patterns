@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Page Title</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!--role="form" turns this into a region in screen readers-->
+    <form role="form" class="sorter" method="get">
+        <fieldset>
+            <legend>Sort by</legend>
+            <input type="radio" name="sort-method" id="most-recent" value="most-recent" checked>
+            <label for="most-recent">most recent</label>
+            <input type="radio" name="sort-method" id="popularity" value="popularity">
+            <label for="popularity">popularity</label>
+            <input type="radio" name="sort-method" id="price-low-high" value="price-low-high">
+            <label for="price-low-high">price (low to high)</label>
+            <input type="radio" name="sort-method" id="price-high-low" value="price-high-low">
+            <label for="price-high-low">price (high to low)</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>Display as</legend>
+            <input type="radio" name="display-as" id="list" value="list" checked>
+            <label for="list">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                        width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+                    <g>
+                        <rect x="156" y="434" width="299" height="45"/>
+                        <rect x="55" y="434" width="56" height="45"/>
+                    </g>
+                    <g>
+                        <rect x="156" y="334" width="299" height="45"/>
+                        <rect x="55" y="334" width="56" height="45"/>
+                    </g>
+                    <g>
+                        <rect x="55" y="234" width="56" height="45"/>
+                        <rect x="156" y="234" width="299" height="45"/>
+                    </g>
+                    <g>
+                        <rect x="55" y="134" width="56" height="45"/>
+                        <rect x="156" y="134" width="299" height="45"/>
+                    </g>
+                    <g>
+                        <rect x="55" y="34" width="56" height="45"/>
+                        <rect x="156" y="34" width="299" height="45"/>
+                    </g>
+                    <text class="visuallyHidden">a list</text>
+                </svg>
+
+            </label>
+            
+            <input type="radio" name="display-as" id="grid" value="grid">
+            <label for="grid">
+                <svg height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><g><path d="M160,153.3c0,3.7-3,6.7-6.7,6.7h-50.5c-3.7,0-6.7-3-6.7-6.7v-50.5c0-3.7,3-6.7,6.7-6.7h50.5c3.7,0,6.7,3,6.7,6.7V153.3z"/><path d="M288,153.3c0,3.7-3,6.7-6.7,6.7h-50.5c-3.7,0-6.7-3-6.7-6.7v-50.5c0-3.7,3-6.7,6.7-6.7h50.5c3.7,0,6.7,3,6.7,6.7V153.3z"/><path d="M416,153.3c0,3.7-3,6.7-6.7,6.7h-50.5c-3.7,0-6.7-3-6.7-6.7v-50.5c0-3.7,3-6.7,6.7-6.7h50.5c3.7,0,6.7,3,6.7,6.7V153.3z"/></g><g><path d="M160,281.3c0,3.7-3,6.7-6.7,6.7h-50.5c-3.7,0-6.7-3-6.7-6.7v-50.5c0-3.7,3-6.7,6.7-6.7h50.5c3.7,0,6.7,3,6.7,6.7V281.3z"/><path d="M288,281.3c0,3.7-3,6.7-6.7,6.7h-50.5c-3.7,0-6.7-3-6.7-6.7v-50.5c0-3.7,3-6.7,6.7-6.7h50.5c3.7,0,6.7,3,6.7,6.7V281.3z"/><path d="M416,281.3c0,3.7-3,6.7-6.7,6.7h-50.5c-3.7,0-6.7-3-6.7-6.7v-50.5c0-3.7,3-6.7,6.7-6.7h50.5c3.7,0,6.7,3,6.7,6.7V281.3z"/></g><g><path d="M160,409.3c0,3.7-3,6.7-6.7,6.7h-50.5c-3.7,0-6.7-3-6.7-6.7v-50.5c0-3.7,3-6.7,6.7-6.7h50.5c3.7,0,6.7,3,6.7,6.7V409.3z"/><path d="M288,409.3c0,3.7-3,6.7-6.7,6.7h-50.5c-3.7,0-6.7-3-6.7-6.7v-50.5c0-3.7,3-6.7,6.7-6.7h50.5c3.7,0,6.7,3,6.7,6.7V409.3z"/><path d="M416,409.3c0,3.7-3,6.7-6.7,6.7h-50.5c-3.7,0-6.7-3-6.7-6.7v-50.5c0-3.7,3-6.7,6.7-6.7h50.5c3.7,0,6.7,3,6.7,6.7V409.3z"/></g></g>
+                   <text class="visuallyHidden">a grid</text>
+                </svg>
+            </label>
+        </fieldset>
+
+        <button type="submit">apply</button>
+    </form>
+
+    <script src="script.js" type="text/javascript"></script>
+</body>
+
+</html>
