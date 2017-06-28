@@ -17,7 +17,7 @@ inspired by
 :::
 
 :::slide
- ![](C:\repository\accessible-code-patterns\presentation\media\average-user.svg) 
+ ![](media\average-user.svg) 
 :::
 ::::
 
@@ -166,7 +166,7 @@ Font loading
 :::slide
 - a menu should look like a menu
 
- ![](C:\repository\accessible-code-patterns\presentation\media\menu.svg) 
+ ![](media\menu.svg) 
 :::
 
 :::slide
