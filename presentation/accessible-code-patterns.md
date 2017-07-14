@@ -17,7 +17,7 @@ inspired by
 :::
 
 :::slide
- ![](media\average-user.svg) 
+ ![](media/average-user.svg) 
 :::
 ::::
 
@@ -166,7 +166,7 @@ Font loading
 :::slide
 - a menu should look like a menu
 
- ![](media\menu.svg) 
+ ![](media/menu.svg) 
 :::
 
 :::slide
@@ -285,19 +285,6 @@ main * + * {
 }
 ````
 note the use of the [owl selector](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls)
-:::
-
-:::slide
-## .visuallyHidden
-````
-.visuallyHidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-}
-````
 :::
 
 :::slide
