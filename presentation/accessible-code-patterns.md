@@ -1,56 +1,12 @@
 ::::slide
+
+::::::::slide
 # Accessible code patterns
 francesco bedussi
 
 inspired by
 
 [*Inclusive design pattern* by Heydon Pickering](https://www.smashingmagazine.com/inclusive-design-patterns/)
-::::
-
-::::slide
-:::slide
-> unfortunately, we have a habit of overengineering and overcomplicating things
->
-> targeting a so-called average user is a disastrus interface design strategy, because average users do not exist
->
-> *Heydon Pickering*
-:::
-
-:::slide
- ![](media/average-user.svg) 
-:::
-::::
-
-::::slide
-# Accessibility, why?
-
-- It involves **a lot of people**: Though estimates vary, most studies find that about one fifth (20%) of the population has some kind of disability
-- Search engine spiders are severely "impaired", so an accessible site is also a **search engine friendly site**
-- **We have to**. Governments (especially USA) are enforcing accessibility by legislation
-::::
-
-::::slide
-# Accessibility, for whom?
-
-- Vision impairments
-- Limited fine motor control
-- Cognitive disabilities (rings a bell? :-P )
-- Hearing impairments
-- Older people (ourselves tomorrow)
-::::
-
-::::slide
-# Checklist
-
-- People who don't use a mouse should be able to use a site
-- People who don't look at a screen should be able to use a site
-- A site's content should be visually legible
-- People should have control over automatic changes to the page
-
-::::
-
-::::slide
-# patterns vs principles
 ::::
 
 ::::slide
@@ -63,6 +19,57 @@ inspired by
 - list of products
 - filter widget
 - registration form
+::::
+
+::::slide
+:::slide
+> unfortunately, we have a habit of overengineering and overcomplicating things
+> 
+> *Heydon Pickering*
+:::
+
+:::slide
+> targeting a so-called average user is a disastrus interface design strategy, because average users do not exist
+>
+> *Heydon Pickering*
+:::
+
+
+:::slide
+ ![](media/average-user.svg) 
+:::
+::::
+
+::::slide
+# Accessibility, why?
+
+- It involves **a lot of people**: about one fifth (20%) of the population has some kind of disability {fragment}
+- An accessible site is also a **search engine friendly site** {fragment}
+- **We have to**. Governments (especially USA) are enforcing accessibility by legislation {fragment}
+::::
+
+::::slide
+# Accessibility, for whom?
+
+- Vision impairments {fragment}
+- Limited fine motor control {fragment}
+- Cognitive disabilities (rings a bell? :-P ) {fragment}
+- Hearing impairments {fragment}
+- Older people (ourselves tomorrow) {fragment}
+::::
+
+::::slide
+# Checklist
+
+- Navigation without mouse
+- Navigation without screen
+- Content should be visually legible
+- Control over automatic changes
+
+::::
+
+::::slide
+# patterns vs principles
 ::::
 
 ::::slide
@@ -115,6 +122,10 @@ responsive font-size
 ````
 html { font-size: calc(1em + 1vw); }
 ````
+:::
+
+:::slide
+## demo
 :::
 
 :::slide
@@ -275,30 +286,6 @@ critical JS (vanilla, to be included at the end of the page)
 - use keyboard and screen reader accessible players (e.g. YouTube, it provides captions too)
 - provide a transcript (linearized version of captions) 
 :::
-
-:::slide
-## Vertical flow
-Use paragraph line-height as basis for vertical spacing: e.g if the line-height is 1.5, then one unit of vertical whitespace should be 1.5rem:
-````
-main * + * {
-    margin-top: 1.5rem;
-}
-````
-note the use of the [owl selector](https://alistapart.com/article/axiomatic-css-and-lobotomized-owls)
-:::
-
-:::slide
-## tricks
-### defensive coding
-````
-main :empty {
-    display: none;
-}
-````
-
-### forcefeed.js
-allows you to feed the layout with random content of different length
-:::
 ::::
 
 ::::slide
@@ -319,6 +306,11 @@ allows you to feed the layout with random content of different length
 - keep the standard link style (blue, underlined) whenever possible, eventually improve it
 - never ever just remove focus style, eventually replace it
 :::
+
+:::slide
+## demo
+:::
+
 ::::
 
 ::::slide
@@ -335,6 +327,10 @@ allows you to feed the layout with random content of different length
 .grid {display: flex; flex-wrap: wrap;}
 .grid li {flex-grow: 1; flex-shrink: 1; flex-basis: 10em}
 ````
+:::
+
+:::slide
+## demo
 :::
 
 :::slide
@@ -440,6 +436,11 @@ group key pieces of information in a definition list:
 - use live regions to communicate that the content is being fetched
 - do not remove the submit button
 :::
+
+:::slide
+## demo
+:::
+
 ::::
 
 ::::slide
@@ -487,6 +488,10 @@ group key pieces of information in a definition list:
 - provide a hint on why the field is invalid
 :::
 
+::::
+
+::::slide
+let your code speak for itself 
 ::::
 
 

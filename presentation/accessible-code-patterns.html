@@ -42,52 +42,12 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section >
+<section >
 <h1>Accessible code patterns</h1>
 <p>francesco bedussi</p>
 <p>inspired by</p>
 <p><a href="https://www.smashingmagazine.com/inclusive-design-patterns/"><em>Inclusive design pattern</em> by Heydon Pickering</a></p>
 </section>
-<section >
-<section >
-<blockquote>
-<p>unfortunately, we have a habit of overengineering and overcomplicating things</p>
-<p>targeting a so-called average user is a disastrus interface design strategy, because average users do not exist</p>
-<p><em>Heydon Pickering</em></p>
-</blockquote>
-</section>
-<section >
-<p><img src="C:/repository/accessible-code-patterns/presentation/media/average-user.svg" alt=""></p>
-</section>
-</section>
-<section >
-<h1>Accessibility, why?</h1>
-<ul>
-<li>It involves <strong>a lot of people</strong>: Though estimates vary, most studies find that about one fifth (20%) of the population has some kind of disability</li>
-<li>Search engine spiders are severely &quot;impaired&quot;, so an accessible site is also a <strong>search engine friendly site</strong></li>
-<li><strong>We have to</strong>. Governments (especially USA) are enforcing accessibility by legislation</li>
-</ul>
-</section>
-<section >
-<h1>Accessibility, for whom?</h1>
-<ul>
-<li>Vision impairments</li>
-<li>Limited fine motor control</li>
-<li>Cognitive disabilities (rings a bell? :-P )</li>
-<li>Hearing impairments</li>
-<li>Older people (ourselves tomorrow)</li>
-</ul>
-</section>
-<section >
-<h1>Checklist</h1>
-<ul>
-<li>People who don't use a mouse should be able to use a site</li>
-<li>People who don't look at a screen should be able to use a site</li>
-<li>A site's content should be visually legible</li>
-<li>People should have control over automatic changes to the page</li>
-</ul>
-</section>
-<section >
-<h1>patterns vs principles</h1>
 </section>
 <section >
 <h1>index</h1>
@@ -101,6 +61,53 @@
 <li>filter widget</li>
 <li>registration form</li>
 </ul>
+</section>
+<section >
+<section >
+<blockquote>
+<p>unfortunately, we have a habit of overengineering and overcomplicating things</p>
+<p><em>Heydon Pickering</em></p>
+</blockquote>
+</section>
+<section >
+<blockquote>
+<p>targeting a so-called average user is a disastrus interface design strategy, because average users do not exist</p>
+<p><em>Heydon Pickering</em></p>
+</blockquote>
+</section>
+<section >
+<p><img src="/var/www/html/accessible-code-patterns/presentation/media/average-user.svg" alt=""></p>
+</section>
+</section>
+<section >
+<h1>Accessibility, why?</h1>
+<ul>
+<li class="fragment">It involves <strong>a lot of people</strong>: about one fifth (20%) of the population has some kind of disability</li>
+<li class="fragment">An accessible site is also a <strong>search engine friendly site</strong></li>
+<li class="fragment"><strong>We have to</strong>. Governments (especially USA) are enforcing accessibility by legislation</li>
+</ul>
+</section>
+<section >
+<h1>Accessibility, for whom?</h1>
+<ul>
+<li class="fragment">Vision impairments</li>
+<li class="fragment">Limited fine motor control</li>
+<li class="fragment">Cognitive disabilities (rings a bell? :-P )</li>
+<li class="fragment">Hearing impairments</li>
+<li class="fragment">Older people (ourselves tomorrow)</li>
+</ul>
+</section>
+<section >
+<h1>Checklist</h1>
+<ul>
+<li>Navigation without mouse</li>
+<li>Navigation without screen</li>
+<li>Content should be visually legible</li>
+<li>Control over automatic changes</li>
+</ul>
+</section>
+<section >
+<h1>patterns vs principles</h1>
 </section>
 <section >
 <h1>document</h1>
@@ -143,6 +150,9 @@ maximum-scale=1.0, user-scalable=no&quot;&gt;
 <p>responsive font-size</p>
 <pre><code>html { font-size: calc(1em + 1vw); }
 </code></pre>
+</section>
+<section >
+<h2>demo</h2>
 </section>
 <section >
 <p>Font loading</p>
@@ -295,25 +305,6 @@ maximum-scale=1.0, user-scalable=no&quot;&gt;
 <li>provide a transcript (linearized version of captions)</li>
 </ul>
 </section>
-<section >
-<h2>Vertical flow</h2>
-<p>Use paragraph line-height as basis for vertical spacing: e.g if the line-height is 1.5, then one unit of vertical whitespace should be 1.5rem:</p>
-<pre><code>main * + * {
-    margin-top: 1.5rem;
-}
-</code></pre>
-<p>note the use of the <a href="https://alistapart.com/article/axiomatic-css-and-lobotomized-owls">owl selector</a></p>
-</section>
-<section >
-<h2>tricks</h2>
-<h3>defensive coding</h3>
-<pre><code>main :empty {
-    display: none;
-}
-</code></pre>
-<h3>forcefeed.js</h3>
-<p>allows you to feed the layout with random content of different length</p>
-</section>
 </section>
 <section >
 <h1>paragraph</h1>
@@ -334,6 +325,9 @@ maximum-scale=1.0, user-scalable=no&quot;&gt;
 <li>never ever just remove focus style, eventually replace it</li>
 </ul>
 </section>
+<section >
+<h2>demo</h2>
+</section>
 </section>
 <section >
 <h1>list of products</h1>
@@ -348,6 +342,9 @@ maximum-scale=1.0, user-scalable=no&quot;&gt;
 <pre><code>.grid {display: flex; flex-wrap: wrap;}
 .grid li {flex-grow: 1; flex-shrink: 1; flex-basis: 10em}
 </code></pre>
+</section>
+<section >
+<h2>demo</h2>
 </section>
 <section >
 <h2>key information</h2>
@@ -452,6 +449,9 @@ maximum-scale=1.0, user-scalable=no&quot;&gt;
 <li>do not remove the submit button</li>
 </ul>
 </section>
+<section >
+<h2>demo</h2>
+</section>
 </section>
 <section >
 <h1>a registration form</h1>
@@ -496,6 +496,9 @@ maximum-scale=1.0, user-scalable=no&quot;&gt;
 <li>provide a hint on why the field is invalid</li>
 </ul>
 </section>
+</section>
+<section >
+<p>let your code speak for itself</p>
 </section>
 
 
