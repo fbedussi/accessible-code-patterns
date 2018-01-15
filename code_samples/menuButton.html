@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Page Title</title>
+    <link rel="stylesheet" href="style.css"/>
+    <style>
+    .mainMenu.visible {
+        transform: translateX(-100%);
+        transition: transform 0.5s;
+    }
+
+    .mainMenu.open {
+        transform: translateX(0);
+    }
+</style>
+</head>
+
+<body>
+    <nav aria-label="site">
+        <button aria-expanded="false" hidden>
+            <svg><use xlink:href="#navicon"></use></svg>
+            menu
+        </button>
+        <ul hidden class="mainMenu">
+            <li><a href="#main">home</a></li>
+            <li><a href="/about">about</a></li>
+            <li><a href="/products">products</a></li>
+        </ul>
+    </nav>
+</body>
+<script src="menuScript.js"></script>
+</html>
